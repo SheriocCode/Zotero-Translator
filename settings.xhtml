@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:html="http://www.w3.org/1999/xhtml"
+  title="PDF Translation Backend" width="680" height="430" onload="ZoteroTranslateSettings.load()">
+  <script src="settings.js" />
+  <vbox style="padding: 18px;">
+    <label value="PDFMathTranslate Backend" style="font-size: 18px; font-weight: 600; margin-bottom: 6px;" />
+    <description style="margin-bottom: 14px;"> These settings are used when translating selected Zotero PDF attachments.
+    </description>
+    <grid flex="1">
+      <columns>
+        <column style="width: 150px;" />
+        <column flex="1" />
+        <column />
+      </columns>
+      <rows>
+        <row align="center">
+          <label value="Backend command" control="executablePath" />
+          <html:input id="executablePath" type="text" style="width: 100%;" />
+          <button label="Browse" oncommand="ZoteroTranslateSettings.browseExecutable()" />
+        </row>
+        <row>
+          <spacer />
+          <description style="color: #666; margin-bottom: 8px;"> Use pdf2zh, or a full path such as
+            C:\Users\...\Scripts\pdf2zh.exe. </description>
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="Service" control="service" />
+          <menulist id="service">
+            <menupopup>
+              <menuitem label="OpenAI compatible" value="openai" />
+            </menupopup>
+          </menulist>
+          <spacer />
+        </row>
+        <row>
+          <spacer />
+          <description style="color: #666; margin-bottom: 8px;"> DeepSeek is OpenAI compatible. Use
+            OPENAI_BASE_URL=https://api.deepseek.com and OPENAI_MODEL=deepseek-chat. </description>
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="OPENAI_BASE_URL" control="openaiBaseURL" />
+          <html:input id="openaiBaseURL" type="text" style="width: 100%;" />
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="OPENAI_API_KEY" control="openaiAPIKey" />
+          <html:input id="openaiAPIKey" type="password" style="width: 100%;" />
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="OPENAI_MODEL" control="openaiModel" />
+          <html:input id="openaiModel" type="text" style="width: 100%;" />
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="Source language" control="sourceLang" />
+          <html:input id="sourceLang" type="text" style="width: 100%;" />
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="Target language" control="targetLang" />
+          <html:input id="targetLang" type="text" style="width: 100%;" />
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="Imported PDF" control="outputVariant" />
+          <menulist id="outputVariant">
+            <menupopup>
+              <menuitem label="dual bilingual PDF" value="dual" />
+              <menuitem label="mono translated PDF" value="mono" />
+            </menupopup>
+          </menulist>
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="Pages" control="pageMode" />
+          <menulist id="pageMode">
+            <menupopup>
+              <menuitem label="All" value="all" />
+              <menuitem label="First" value="first" />
+              <menuitem label="First 5 pages" value="first5" />
+              <menuitem label="Others" value="custom" />
+            </menupopup>
+          </menulist>
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="Custom pages" control="customPages" />
+          <html:input id="customPages" type="text" style="width: 100%;" />
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="number of threads" control="threads" />
+          <html:input id="threads" type="number" style="width: 100%;" />
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="Skip font subsetting" control="skipFontSubsetting" />
+          <checkbox id="skipFontSubsetting" />
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="Ignore cache" control="ignoreCache" />
+          <checkbox id="ignoreCache" />
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="Custom formula font regex (vfont)" control="formulaFontRegex" />
+          <html:input id="formulaFontRegex" type="text" style="width: 100%;" />
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="Custom Prompt for llm" control="customPrompt" />
+          <html:textarea id="customPrompt" rows="4" style="width: 100%;" />
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="Use BabelDOC" control="useBabelDOC" />
+          <checkbox id="useBabelDOC" />
+          <spacer />
+        </row>
+        <row align="center">
+          <label value="Extra arguments" control="extraArgs" />
+          <html:input id="extraArgs" type="text" style="width: 100%;" />
+          <spacer />
+        </row>
+        <row>
+          <spacer />
+          <description style="color: #666;"> Appended to the pdf2zh command. Use this for backend-specific options.
+          </description>
+          <spacer />
+        </row>
+      </rows>
+    </grid>
+    <hbox pack="end" style="margin-top: 16px;">
+      <button label="Cancel" oncommand="ZoteroTranslateSettings.cancel()" style="margin-right: 8px;" />
+      <button label="Save" default="true" oncommand="ZoteroTranslateSettings.save()" />
+    </hbox>
+  </vbox>
+</window>

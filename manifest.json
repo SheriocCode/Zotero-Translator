@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "Zotero Translate PDF",
+  "version": "0.1.17",
+  "description": "Translate selected Zotero PDF attachments with PDFMathTranslate and attach the bilingual PDF back to Zotero.",
+  "author": "Codex",
+  "applications": {
+    "zotero": {
+      "id": "zotero-translate@example.local",
+      "update_url": "https://example.local/updates.json",
+      "strict_min_version": "7.0",
+      "strict_max_version": "7.1.*"
+    }
+  }
+}

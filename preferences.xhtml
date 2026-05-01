@@ -1,0 +1,28 @@
+<vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+      xmlns:html="http://www.w3.org/1999/xhtml">
+  <groupbox>
+    <label><html:h2>PDFMathTranslate Backend</html:h2></label>
+    <html:p>Configure the local command used to translate Zotero PDF attachments.</html:p>
+
+    <label value="Executable path or command"/>
+    <html:input type="text" preference="extensions.zotero-translate.executablePath"/>
+
+    <label value="Translation service"/>
+    <html:input type="text" preference="extensions.zotero-translate.service"/>
+
+    <label value="Source language"/>
+    <html:input type="text" preference="extensions.zotero-translate.sourceLang"/>
+
+    <label value="Target language"/>
+    <html:input type="text" preference="extensions.zotero-translate.targetLang"/>
+
+    <label value="Output variant"/>
+    <html:select preference="extensions.zotero-translate.outputVariant">
+      <html:option value="dual">dual</html:option>
+      <html:option value="mono">mono</html:option>
+    </html:select>
+
+    <label value="Extra pdf2zh arguments"/>
+    <html:input type="text" preference="extensions.zotero-translate.extraArgs"/>
+  </groupbox>
+</vbox>

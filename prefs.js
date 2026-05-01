@@ -1,0 +1,17 @@
+pref("extensions.zotero-translate.executablePath", "pdf2zh");
+pref("extensions.zotero-translate.service", "openai");
+pref("extensions.zotero-translate.sourceLang", "en");
+pref("extensions.zotero-translate.targetLang", "zh-CN");
+pref("extensions.zotero-translate.outputVariant", "dual");
+pref("extensions.zotero-translate.extraArgs", "");
+pref("extensions.zotero-translate.openaiBaseURL", "https://api.deepseek.com");
+pref("extensions.zotero-translate.openaiAPIKey", "sk-b14040917d2041efb361eaf23e927517");
+pref("extensions.zotero-translate.openaiModel", "deepseek-chat");
+pref("extensions.zotero-translate.pageMode", "all");
+pref("extensions.zotero-translate.customPages", "");
+pref("extensions.zotero-translate.threads", "4");
+pref("extensions.zotero-translate.skipFontSubsetting", false);
+pref("extensions.zotero-translate.ignoreCache", false);
+pref("extensions.zotero-translate.formulaFontRegex", "");
+pref("extensions.zotero-translate.customPrompt", "");
+pref("extensions.zotero-translate.useBabelDOC", false);

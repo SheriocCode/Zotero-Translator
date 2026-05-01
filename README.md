@@ -1,5 +1,7 @@
 # Zotero Translate PDF
 
+![alt text](assets/user_guide.png)
+
 Zotero 7 plugin scaffold for translating PDF attachments with [PDFMathTranslate](https://github.com/PDFMathTranslate/PDFMathTranslate). It adds:
 
 - Right-click menu on Zotero items: `Translate PDF with PDFMathTranslate`

@@ -30,7 +30,7 @@ var ZoteroTranslateSettings = {
     const picker = Components.classes["@mozilla.org/filepicker;1"]
       .createInstance(Components.interfaces.nsIFilePicker);
 
-    picker.init(window, "Select PDFMathTranslate executable", Components.interfaces.nsIFilePicker.modeOpen);
+    this.initFilePicker(picker, window, "Select PDFMathTranslate executable", Components.interfaces.nsIFilePicker.modeOpen);
     picker.appendFilters(Components.interfaces.nsIFilePicker.filterApps);
     picker.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
 
@@ -39,6 +39,19 @@ var ZoteroTranslateSettings = {
         document.getElementById("executablePath").value = picker.file.path;
       }
     });
+  },
+
+  initFilePicker(picker, window, title, mode) {
+    const parent = window.browsingContext || window;
+    try {
+      picker.init(parent, title, mode);
+    }
+    catch (err) {
+      if (parent === window) {
+        throw err;
+      }
+      picker.init(window, title, mode);
+    }
   },
 
   save() {

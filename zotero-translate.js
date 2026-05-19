@@ -49,7 +49,7 @@ ZoteroTranslatePDF = {
     if (itemMenu && !doc.getElementById(this.MENU_ID)) {
       const menuItem = doc.createXULElement("menuitem");
       menuItem.id = this.MENU_ID;
-      menuItem.setAttribute("label", "Translate PDF with PDFMathTranslate");
+      this.setXULLabel(menuItem, "Translate PDF with PDFMathTranslate");
       menuItem.addEventListener("command", () => this.translateSelectedPDFs(window));
       itemMenu.appendChild(menuItem);
       this.storeAddedElement(menuItem);
@@ -65,12 +65,12 @@ ZoteroTranslatePDF = {
 
       const translateItem = doc.createXULElement("menuitem");
       translateItem.id = this.TOOLS_MENU_ID;
-      translateItem.setAttribute("label", "Translate Selected Zotero PDFs");
+      this.setXULLabel(translateItem, "Translate Selected Zotero PDFs");
       translateItem.addEventListener("command", () => this.translateSelectedPDFs(window));
 
       const settingsItem = doc.createXULElement("menuitem");
       settingsItem.id = this.SETTINGS_MENU_ID;
-      settingsItem.setAttribute("label", "Configure PDF Translation Backend");
+      this.setXULLabel(settingsItem, "Configure PDF Translation Backend");
       settingsItem.addEventListener("command", () => this.configureBackend(window));
 
       toolsPopup.appendChild(separator);
@@ -86,6 +86,11 @@ ZoteroTranslatePDF = {
     if (!this.addedElementIDs.includes(element.id)) {
       this.addedElementIDs.push(element.id);
     }
+  },
+
+  setXULLabel(element, label) {
+    element.label = label;
+    element.setAttribute("label", label);
   },
 
   removeFromWindow(window) {
@@ -590,7 +595,7 @@ ZoteroTranslatePDF = {
     const picker = Components.classes["@mozilla.org/filepicker;1"]
       .createInstance(Components.interfaces.nsIFilePicker);
 
-    picker.init(window, "Select PDFMathTranslate executable", Components.interfaces.nsIFilePicker.modeOpen);
+    this.initFilePicker(picker, window, "Select PDFMathTranslate executable", Components.interfaces.nsIFilePicker.modeOpen);
     picker.appendFilters(Components.interfaces.nsIFilePicker.filterApps);
     picker.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
 
@@ -599,6 +604,19 @@ ZoteroTranslatePDF = {
         input.value = picker.file.path;
       }
     });
+  },
+
+  initFilePicker(picker, window, title, mode) {
+    const parent = window.browsingContext || window;
+    try {
+      picker.init(parent, title, mode);
+    }
+    catch (err) {
+      if (parent === window) {
+        throw err;
+      }
+      picker.init(window, title, mode);
+    }
   },
 
   html(doc, tagName, properties = {}) {

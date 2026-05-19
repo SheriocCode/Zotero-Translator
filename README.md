@@ -2,7 +2,7 @@
 
 ![alt text](assets/user_guide.png)
 
-Zotero 7 plugin scaffold for translating PDF attachments with [PDFMathTranslate](https://github.com/PDFMathTranslate/PDFMathTranslate). It adds:
+Zotero 7-9 plugin scaffold for translating PDF attachments with [PDFMathTranslate](https://github.com/PDFMathTranslate/PDFMathTranslate). It adds:
 
 - Right-click menu on Zotero items: `Translate PDF with PDFMathTranslate`
 - Tools menu action: `Translate Selected Zotero PDFs`
@@ -30,7 +30,7 @@ If Zotero cannot find `pdf2zh` from `PATH`, open `Tools -> Configure PDF Transla
 
 2. In Zotero, open `Tools -> Add-ons`.
 3. Choose `Install Add-on From File...`.
-4. Select `dist\zotero-translate-0.1.17.xpi`.
+4. Select `dist\zotero-translate-0.1.18.xpi`.
 
 If you install or update the plugin while Zotero is already open, disable and re-enable the add-on once, or restart Zotero. The plugin also tries to add menus to already-open Zotero windows on startup.
 

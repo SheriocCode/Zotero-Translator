@@ -1,3 +1,13 @@
+> [!IMPORTANT]
+> **本项目已迁移并重构为 [Arxiver](https://github.com/SheriocCode/Arxiver)。**
+>
+> 新仓库提供桌面端 arXiv / 本地 PDF 双语对照阅读、内置离线翻译模型（无需 API Key）、
+> 文献库管理与 Arxiver 助手等完整能力，持续活跃维护中。
+>
+> 本仓库不再接收新功能与 issue，建议前往新仓库获取最新版本：
+> 👉 **https://github.com/SheriocCode/Arxiver**
+>
+> 已有用户请直接下载 [Arxiver Releases](https://github.com/SheriocCode/Arxiver/releases) 安装包。
 # Zotero Translate PDF
 
 ![alt text](assets/user_guide.png)
